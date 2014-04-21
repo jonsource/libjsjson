@@ -1,0 +1,10 @@
+*.cbp
+*.depend
+*.layout
+*.exe
+bin
+lib
+obj
+*/bin
+*/lib
+*/obj
