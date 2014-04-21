@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../libjsjson.h"
+#include "libjsjson.h"
 
 using namespace std;
 
@@ -27,8 +27,8 @@ void testOutp(string str, bool f)
             if(type == N_FLOAT) { printf("\n  ** %f",it->second->getFloat()); }
             if(type == N_STRING) { printf("\n  ** %s",it->second->getString().c_str()); }
             string s = it->first;
-            printf("\n  *-* %s %s %s", s.c_str(),string("g").c_str(), root->getMember(s)->serialize().c_str());
-            printf("\n  *-* %s %d", s.c_str(), root->hasMember(string("g")));
+            //printf("\n  *-* %s %s %s", s.c_str(),string("g").c_str(), root->getMember(s)->serialize().c_str());
+            //printf("\n  *-* %s %d", s.c_str(), root->hasMember(string("g")));
         }
     }
 }

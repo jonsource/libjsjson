@@ -1,5 +1,5 @@
 #include "libjsjson.h"
-#include "lib/jslib.h"
+#include "jslib.h"
 
 using namespace std;
 using namespace jslib;
@@ -35,7 +35,7 @@ ObjectNode::ObjectNode(string in) {
     JsonReader jr;
     Node * n = jr.parse(&in);
     if(n->getType()!=OBJECT)
-    {   debug("Bad JSON object definition :"+in);
+    {   debug("Bad JSON object definition :"+in,10);
         exit(1);
     }
     value = n->getObject();
@@ -64,7 +64,7 @@ bool ObjectNode::isObject() { return true; }
 bool ObjectNode::hasMember(string s) { if(value->count(s)) return true; else return false;}
 Node * ObjectNode::getMember(string s)
 {   if(!hasMember(s))
-    { debug("ObjectOverflow, no member "+s+".");
+    { debug("ObjectOverflow, no member "+s+".",10);
       exit(1);
     }
     return (*value)[s];
@@ -76,7 +76,7 @@ ArrayNode::ArrayNode(string in) {
     JsonReader jr;
     Node * n = jr.parse(&in);
     if(n->getType()!=ARRAY)
-    {   debug("Bad JSON array definition :"+in);
+    {   debug("Bad JSON array definition :"+in,10);
         exit(1);
     }
     value = n->getArray();
@@ -107,7 +107,7 @@ bool ArrayNode::hasMember(int i) {
 }
 Node * ArrayNode::getMember(int i) {
     if(!hasMember(i))
-    { debug("ArrayOverflow "+to_str(i)+".");
+    { debug("ArrayOverflow "+to_str(i)+".",10);
       exit(1);
     }
     return (*value)[i];
@@ -164,7 +164,7 @@ Node* JsonReader::read(string fn)
 {
     file=fopen(fn.c_str(),"r");
     if(file==NULL)
-    {   debug("Cound't open file "+fn);
+    {   debug("Cound't open file "+fn,10);
         exit(1);
     }
     readingFile=true;
@@ -287,7 +287,7 @@ Node* JsonReader::readChars(int type,int state)
                 }
                 if(state == VAL)
                 {   if(c==' ' || c=='\n' || c=='\t') continue;
-                    if((c<'0' || c>'z') && (c!=qt && c!='[' && c!='[' && c!='-'))
+                    if((c<'0' || c>'z') && (c!=qt && c!='[' && c!='{' && c!='-'))
                     {   debug("Error parsing JSON key:value pair, value expected , line "+to_str(ln)+" char "+to_str(car)+" ("+c+")",10);
                         exit(1);
                     }

@@ -1,7 +1,8 @@
 #sadf
 #assda
 
-{"a":[ 55.5,2,3, [1,2,["a","b","c"], 2, 3, "dhsd", "dsdgds\"sdfg\" df" ] ],
+{"z": {"strom":"jasan"},
+"a":[ 55.5,2,3, [1,2,["a","b","c"], 2, 3, "dhsd", "dsdgds\"sdfg\" df" ] ],
 "b":[ -2, {"rate":2,"frame":"pet","ichor":[3,4]} ],
 "c" :  "lala string",
 "d" : 2,
