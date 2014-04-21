@@ -2,6 +2,7 @@
 *.depend
 *.layout
 *.exe
+*.a
 bin
 lib
 obj
